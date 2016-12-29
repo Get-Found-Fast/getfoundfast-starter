@@ -21,7 +21,11 @@
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
+<script>
+	$(function(){
+		$('#menu').slicknav();
+	});
+</script>
 <?php wp_footer(); ?>
 
 </body>

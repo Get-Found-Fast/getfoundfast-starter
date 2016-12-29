@@ -83,30 +83,23 @@ function gff_starter_content_width() {
 }
 add_action( 'after_setup_theme', 'gff_starter_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function gff_starter_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'gff-starter' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'gff-starter' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'gff_starter_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
 function gff_starter_scripts() {
 	wp_enqueue_style( 'gff-starter-style', get_stylesheet_uri() );
+wp_enqueue_style( 'gff-starter-custom-css', get_template_directory_uri() . '/css/custom.css', array(), '20151215' );
+wp_enqueue_style( 'gff-starter-responsive-menu-css', get_template_directory_uri() . '/css/slicknav.css', array(), '20151215' );
+wp_enqueue_style( 'gff-starter-flexbox-grid', get_template_directory_uri() . '/css/flexboxgrid.css', array(), '20151215' );
 
+
+wp_deregister_script( 'jquery' );
+$jquery_cdn = '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js';
+wp_enqueue_script( 'jquery', $jquery_cdn, array(), '20130115', false );
+
+	
+	wp_enqueue_script( 'gff-starter-responsive-menu', get_template_directory_uri() . '/js/jquery.slicknav.js', array(), '20151215', true );
 	wp_enqueue_script( 'gff-starter-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'gff-starter-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
@@ -141,3 +134,9 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load custom widgets and widget areas.
+ */
+require get_template_directory() . '/inc/widgets.php';
+
