@@ -88,12 +88,9 @@ add_action( 'after_setup_theme', 'gff_starter_content_width', 0 );
  * Enqueue scripts and styles.
  */
 function gff_starter_scripts() {
-	wp_enqueue_style( 'gff-starter-style', get_stylesheet_uri() );
-wp_enqueue_style( 'gff-starter-custom-css', get_template_directory_uri() . '/css/custom.css', array(), '20151215' );
-wp_enqueue_style( 'gff-starter-responsive-menu-css', get_template_directory_uri() . '/css/slicknav.css', array(), '20151215' );
-wp_enqueue_style( 'gff-starter-flexbox-grid', get_template_directory_uri() . '/css/flexboxgrid.css', array(), '20151215' );
-
-
+wp_enqueue_style( 'gff-starter-style', get_stylesheet_directory_uri() . '/style.css', array(), '20151215' );
+wp_enqueue_style( 'gff-starter-flexbox-grid',get_stylesheet_directory_uri()  . '/css/flexboxgrid.css', array(), '20151215' );
+wp_enqueue_style( 'gff-starter-responsive-menu-css', get_stylesheet_directory_uri()  . '/css/slicknav.css', array(), '20151215' );
 wp_deregister_script( 'jquery' );
 $jquery_cdn = '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js';
 wp_enqueue_script( 'jquery', $jquery_cdn, array(), '20130115', false );

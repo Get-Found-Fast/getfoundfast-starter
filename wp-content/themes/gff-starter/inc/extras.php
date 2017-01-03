@@ -37,3 +37,14 @@ function gff_starter_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'gff_starter_pingback_header' );
+
+/**
+ * Adds sitemap shortcode
+ */
+ add_shortcode('sitemap', 'wp_sitemap_page');
+
+ function wp_sitemap_page(){
+
+    return "<ul>".wp_list_pages('title_li=&echo=0')."</ul>";
+
+}

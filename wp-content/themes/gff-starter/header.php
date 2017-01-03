@@ -23,27 +23,15 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'gff-starter' ); ?></a>
 
-	<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-        <?php dynamic_sidebar('header-widget-1');?>
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
-
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
+	<header id="masthead" class="site-header " role="banner">
+		<div class="container"><div class="site-branding row">
+      <!-- Widget header code containing logos, CTA, etc. --> 
+	  <?php dynamic_sidebar('header-widget-1');?>
+		</div></div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'gff-starter' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'menu' ) ); ?>
+		
+			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'menu', 'container' => 'div', 'container_class' => 'container' ) ); ?><!-- menu_id must = menu for slicknav mobile menu to work -->
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 

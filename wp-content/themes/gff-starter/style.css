@@ -260,6 +260,10 @@ th {
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
+html {
+	font-size: 12px;
+}
+
 body,
 button,
 input,
@@ -500,6 +504,14 @@ textarea {
 }
 
 /*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+.site-header {
+	padding-top: 20px;
+}
+
+/*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
@@ -536,6 +548,12 @@ a:active {
 	display: block;
 	float: left;
 	width: 100%;
+	background: #7d7e7d;
+background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%);
+background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%);
+background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 );
+
 }
 
 .main-navigation ul {
@@ -543,16 +561,19 @@ a:active {
 	list-style: none;
 	margin: 0;
 	padding-left: 0;
+	text-align: center; /*change this to change direct of menu items */
 }
 
 .main-navigation li {
-	float: left;
+	display: inline-block; 
 	position: relative;
+	padding: 15px;
 }
 
 .main-navigation a {
 	display: block;
 	text-decoration: none;
+	color: #fff;
 }
 
 .main-navigation ul ul {
@@ -574,6 +595,7 @@ a:active {
 }
 
 .main-navigation ul ul li {
+	
 
 }
 
@@ -611,10 +633,8 @@ a:active {
 	display: block;
 }
 
-@media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
+@media screen and (min-width: 800px) {
+	
 	.main-navigation ul {
 		display: block;
 	}
@@ -743,9 +763,26 @@ a:active {
 	max-width: 100%;
 }
 
+.global-widgets {margin: 10px 0px; padding: 10px 0px;}
+
+.global-widget1 {}
+
+.global-widget2 {background: #eee;}
+
+.global-widget3 {}
+
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
+
+.slider-img-fit {
+	width: 100%;
+    object-fit: cover;
+    height: 500px;
+}
+
+
+
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
@@ -776,6 +813,16 @@ a:active {
 .page-links {
 	clear: both;
 	margin: 0 0 1.5em;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.site-footer {
+	background: #000;
+	color: #fff;
+	padding: 40px 0px;
 }
 
 /*--------------------------------------------------------------
@@ -892,4 +939,16 @@ object {
 
 .gallery-caption {
 	display: block;
+}
+
+/*--------------------------------------------------------------
+## Media Queries
+--------------------------------------------------------------*/
+
+@media (min-width: 800px) {
+
+.slicknav_menu {
+	display: none;
+}
+
 }
