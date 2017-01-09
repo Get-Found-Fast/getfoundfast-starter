@@ -543,6 +543,22 @@ a:active {
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
+
+.menu {
+	list-style-type: none;
+    padding: 0px;
+    margin:0px 0px 15px 0px;
+    display: block;
+    text-align: center;
+}
+
+.menu li {
+	padding: 5px;
+	display: inline-block;
+
+}
+
+
 .main-navigation {
 	clear: both;
 	display: block;
@@ -775,12 +791,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', end
 # Content
 --------------------------------------------------------------*/
 
-.slider-img-fit {
-	width: 100%;
-    object-fit: cover;
-    height: 500px;
-}
+/*--------------------------------------------------------------
+# Slider
+--------------------------------------------------------------*/
 
+
+
+.slider-img {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	height: 500px;}
 
 
 /*--------------------------------------------------------------

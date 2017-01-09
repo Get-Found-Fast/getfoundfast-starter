@@ -48,3 +48,39 @@ add_action( 'wp_head', 'gff_starter_pingback_header' );
     return "<ul>".wp_list_pages('title_li=&echo=0')."</ul>";
 
 }
+
+/**
+ * Dynamic copyright function
+ */
+ 
+ add_shortcode('copyright', 'gff_copyright');
+function gff_copyright() {
+global $wpdb;
+$copyright_dates = $wpdb->get_results("
+SELECT
+YEAR(min(post_date_gmt)) AS firstdate,
+YEAR(max(post_date_gmt)) AS lastdate
+FROM
+$wpdb->posts
+WHERE
+post_status = 'publish'
+");
+$output = '';
+if($copyright_dates) {
+$copyright = "&copy; " . $copyright_dates[0]->firstdate;
+if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+$copyright .= '-' . $copyright_dates[0]->lastdate;
+}
+$output = $copyright;
+}
+return $output;
+}
+
+// Enable shortcodes in widgets
+add_filter('widget_text', 'do_shortcode');
+// Enable ACF options
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page();
+	
+}

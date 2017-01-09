@@ -19,9 +19,8 @@
 	<footer id="colophon" class="site-footer " role="contentinfo">
     <div class="container">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'gff-starter' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'gff-starter' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'gff-starter' ), 'gff-starter', '<a href="https://automattic.com/" rel="designer">Get Found Fast</a>' ); ?>
+			<div class="row"><?php dynamic_sidebar('footer-widget-1');?></div>
+            <div class="row"><?php dynamic_sidebar('copyright-widget');?></div>
 		</div><!-- .site-info -->
         </div><!-- .container -->
 	</footer><!-- #colophon -->

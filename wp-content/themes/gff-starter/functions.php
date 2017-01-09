@@ -45,6 +45,8 @@ function gff_starter_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'menu-1' => esc_html__( 'Primary', 'gff-starter' ),
+		'social-menu-header' => esc_html__( 'Social Header Menu', 'gff-starter' ),
+		'social-menu-footer' => esc_html__( 'Social Footer Menu', 'gff-starter' ),
 	) );
 
 	/*
@@ -91,11 +93,15 @@ function gff_starter_scripts() {
 wp_enqueue_style( 'gff-starter-style', get_stylesheet_directory_uri() . '/style.css', array(), '20151215' );
 wp_enqueue_style( 'gff-starter-flexbox-grid',get_stylesheet_directory_uri()  . '/css/flexboxgrid.css', array(), '20151215' );
 wp_enqueue_style( 'gff-starter-responsive-menu-css', get_stylesheet_directory_uri()  . '/css/slicknav.css', array(), '20151215' );
+wp_enqueue_style( 'gff-starter-slider-css', get_stylesheet_directory_uri()  . '/css/slick.css', array(), '20151215' );
+wp_enqueue_style( 'gff-starter-slider-theme', get_stylesheet_directory_uri()  . '/css/slick-theme.css', array(), '1.0' );
+wp_register_style( 'fontawesome', 'http:////maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' );
+	wp_enqueue_style( 'fontawesome');
 wp_deregister_script( 'jquery' );
 $jquery_cdn = '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js';
 wp_enqueue_script( 'jquery', $jquery_cdn, array(), '20130115', false );
-
-	
+wp_enqueue_script( 'gff-starter-slick-slider-init', get_template_directory_uri() . '/js/slick-init.js', array(), '20151215', true );
+	wp_enqueue_script( 'gff-starter-slick-slider', get_template_directory_uri() . '/js/slick.js', array(), '20151215', true );
 	wp_enqueue_script( 'gff-starter-responsive-menu', get_template_directory_uri() . '/js/jquery.slicknav.js', array(), '20151215', true );
 	wp_enqueue_script( 'gff-starter-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 

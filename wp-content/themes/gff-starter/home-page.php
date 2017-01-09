@@ -16,7 +16,21 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-     <!--Slider function--> <?php dynamic_sidebar('slider-widget-1');?>
+     <!--Slider function-->  <?php 
+
+$images = get_field('slider_portfolio');
+
+if( $images ): ?>
+<div class="slider" >        <?php foreach( $images as $image ): ?>
+            <div class="slider-wrapper" >
+               
+                     <div class="slider-img" style="background-image: url('<?php echo $image['url'];?>')" alt="<?php echo $image['alt']; ?>" />
+                </div>
+                <div class="slider-caption"><?php echo $image['caption']; ?></div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
         <div class="container">
 
 			<?php
