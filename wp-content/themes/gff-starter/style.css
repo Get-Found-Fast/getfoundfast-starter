@@ -822,7 +822,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', end
   position: fixed;
     top: 150px;
     right: 0;
-    width: 35px;
+    width: 65px;
     padding: 12px 0;
     text-align: center;
     background: #000;
@@ -865,6 +865,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', end
     right: 0;
 }
 
+#slideout .fa {
+	color: #fff;
+	padding: 10px;
+}
 
 /*--------------------------------------------------------------
 ## Posts and pages

@@ -34,10 +34,13 @@
 			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'menu', 'container' => 'div', 'container_class' => 'container' ) ); ?><!-- menu_id must = menu for slicknav mobile menu to work -->
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
- <!-- CSS slideout form --> <div id="slideout">
-    <img src="http://img.usabilitypost.com.s3.amazonaws.com/1104/css_slideout/feedback.png" alt="Feedback" />
-    <div id="slideout_inner">
-       <?php dynamic_sidebar('slideout-widget');?>
-    </div>
-</div>
+ <!-- CSS slideout form --> 
+     <?php if (is_active_sidebar('slideout-widget')) {
+     ?>
+     <?php dynamic_sidebar('slideout-widget');?>
+   
+ <?php
+     }
+ ?>  
+    
 	<div id="content" class="site-content">

@@ -85,13 +85,14 @@ function gff_starter_widgets_init() {
 		'before_title'  => '<h2 class="widget-title copyright-widget-title">',
 		'after_title'   => '</h2>',
 	) );
+	
 	register_sidebar( array(
 		'name'          => esc_html__( 'Slideout Form', 'gff-starter' ),
 		'id'            => 'slideout-widget',
 		'class'         => 'slideout-widget-section',
 		'description'   => esc_html__( 'Widget for Slide Out Form.', 'gff-starter' ),
-		'before_widget' => '<section id="%1$s" class="widget slideout-widget row %2$s">',
-		'after_widget'  => '</section>',
+		'before_widget' => '<div id="slideout">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h2 class="widget-title slideout-widget-title">',
 		'after_title'   => '</h2>',
 	) );
@@ -340,6 +341,8 @@ class WP_Nav_Menu_With_Class extends WP_Widget {
 		<?php
 	}
 }
+
+
 function gff_widgets_init() {
     register_widget( 'GFF_Custom_Block' );
 	register_widget('WP_Nav_Menu_With_Class');
