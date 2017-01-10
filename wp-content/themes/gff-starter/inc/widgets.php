@@ -105,11 +105,11 @@ class GFF_Custom_Block extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'col-block',
-			'description' => __( 'Bootstrap responsive block.' ),
+			'description' => __( 'Bootstrap responsive block.','gff-starter' ),
 			'customize_selective_refresh' => true,
 		);
 		$control_ops = array( 'width' => 400, 'height' => 350 );
-		parent::__construct( 'col-block', __( 'Column Block' ), $widget_ops, $control_ops );
+		parent::__construct( 'col-block', __( 'Column Block','gff-starter' ), $widget_ops, $control_ops );
 	}
 
 public function widget( $args, $instance ) {
@@ -173,13 +173,13 @@ public function widget( $args, $instance ) {
 		$filter = isset( $instance['filter'] ) ? $instance['filter'] : 0;
 		$classes = sanitize_text_field( $instance['classes'] );
 		?>
-		<p><label for="<?php echo $this->get_field_id('classes'); ?>"><?php _e('Classes (Insert CSS classes separated by a space):'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('classes'); ?>"><?php _e('Classes (Insert CSS classes separated by a space):','gff-starter'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('classes'); ?>" name="<?php echo $this->get_field_name('classes'); ?>" type="text" value="<?php echo esc_attr($classes); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e( 'Content:' ); ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'text' ); ?>"><?php _e( 'Content:','gff-starter' ); ?></label>
 		<textarea class="widefat" rows="16" cols="20" id="<?php echo $this->get_field_id('text'); ?>" name="<?php echo $this->get_field_name('text'); ?>"><?php echo esc_textarea( $instance['text'] ); ?></textarea></p>
 
-		<p><input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox"<?php checked( $filter ); ?> />&nbsp;<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs'); ?></label></p>
+		<p><input id="<?php echo $this->get_field_id('filter'); ?>" name="<?php echo $this->get_field_name('filter'); ?>" type="checkbox"<?php checked( $filter ); ?> />&nbsp;<label for="<?php echo $this->get_field_id('filter'); ?>"><?php _e('Automatically add paragraphs','gff-starter'); ?></label></p>
 		<?php
 	}
 }
@@ -200,10 +200,10 @@ class WP_Nav_Menu_With_Class extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
-			'description' => __( 'Add a custom menu to your sidebar that uses CSS classes' ),
+			'description' => __( 'Add a custom menu to your sidebar that uses CSS classes','gff-starter' ),
 			'customize_selective_refresh' => true,
 		);
-		parent::__construct( 'nav_menu_custom', __('Custom Menu w/ CSS Classes'), $widget_ops );
+		parent::__construct( 'nav_menu_custom', __('Custom Menu w/ CSS Classes','gff-starter'), $widget_ops );
 	}
 
 	/**
@@ -303,17 +303,17 @@ class WP_Nav_Menu_With_Class extends WP_Widget {
 				$url = admin_url( 'nav-menus.php' );
 			}
 			?>
-			<?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.' ), esc_attr( $url ) ); ?>
+			<?php echo sprintf( __( 'No menus have been created yet. <a href="%s">Create some</a>.','gff-starter' ), esc_attr( $url ) ); ?>
 		</p>
 		<div class="nav-menu-widget-form-controls" <?php if ( empty( $menus ) ) { echo ' style="display:none" '; } ?>>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'nav_class' ); ?>"><?php _e( 'Classes (Insert CSS classes separated by a space):' ) ?></label>
+				<label for="<?php echo $this->get_field_id( 'nav_class' ); ?>"><?php _e( 'Classes (Insert CSS classes separated by a space):','gff-starter' ) ?></label>
 				<input type="text" class="widefat" id="<?php echo $this->get_field_id( 'nav_class' ); ?>" name="<?php echo $this->get_field_name( 'nav_class' ); ?>" value="<?php echo esc_attr( $nav_class ); ?>"/>
 			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:' ); ?></label>
+				<label for="<?php echo $this->get_field_id( 'nav_menu' ); ?>"><?php _e( 'Select Menu:','gff-starter' ); ?></label>
 				<select id="<?php echo $this->get_field_id( 'nav_menu' ); ?>" name="<?php echo $this->get_field_name( 'nav_menu' ); ?>">
-					<option value="0"><?php _e( '&mdash; Select &mdash;' ); ?></option>
+					<option value="0"><?php _e( '&mdash; Select &mdash;','gff-starter' ); ?></option>
 					<?php foreach ( $menus as $menu ) : ?>
 						<option value="<?php echo esc_attr( $menu->term_id ); ?>" <?php selected( $nav_menu, $menu->term_id ); ?>>
 							<?php echo esc_html( $menu->name ); ?>
@@ -323,7 +323,7 @@ class WP_Nav_Menu_With_Class extends WP_Widget {
 			</p>
 			<?php if ( $wp_customize instanceof WP_Customize_Manager ) : ?>
 				<p class="edit-selected-nav-menu" style="<?php if ( ! $nav_menu ) { echo 'display: none;'; } ?>">
-					<button type="button" class="button"><?php _e( 'Edit Menu' ) ?></button>
+					<button type="button" class="button"><?php _e( 'Edit Menu','gff-starter' ) ?></button>
 				</p>
 			<?php endif; ?>
 		</div>
