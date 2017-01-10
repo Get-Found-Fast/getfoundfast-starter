@@ -76,9 +76,14 @@ $output = $copyright;
 return $output;
 }
 
-// Enable shortcodes in widgets
+/**
+ * Enable shortcodes in widgets
+ */
 add_filter('widget_text', 'do_shortcode');
-// Enable ACF options
+
+/**
+ *Enable ACF options
+ */
 if( function_exists('acf_add_options_page') ) {
 	
 	acf_add_options_page();
