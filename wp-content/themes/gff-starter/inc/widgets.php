@@ -437,10 +437,126 @@ public function widget( $args, $instance ) {
 	}
 }
 
+/**
+	 * Adds social media icons widget
+	 */
+ 
+class GFF_social_icons extends WP_Widget {
+
+	
+	/**
+	 * Sets up a new Text widget instance.
+	 *
+	 * @since 2.8.0
+	 * @access public
+	 */
+	public function __construct() {
+		$widget_ops = array(
+			'classname' => 'social-icons',
+			'description' => __( 'Add social media icons to the website. Change these under "options".','gff-starter' ),
+			'customize_selective_refresh' => true,
+		);
+		$control_ops = array( 'width' => 400, 'height' => 350 );
+		parent::__construct( 'social-icons', __( 'Social Media Icons','gff-starter' ), $widget_ops, $control_ops );
+	}
+
+// display widget
+public function widget($args, $instance) {
+	$facebook = get_field('facebook', 'option');
+	$facebook_url = get_field('facebook_url', 'option');
+	$googleplus = get_field('google_plus', 'option');
+	$googleplus_url = get_field('google_plus_url', 'option');
+	$twitter = get_field('twitter', 'option');
+	$twitter_url = get_field('twitter_url', 'option');
+	$youtube = get_field('youtube', 'option');
+	$youtube_url = get_field('youtube_url', 'option');
+	$checkbox = $instance['checkbox'];
+	$checkbox2 = $instance['checkbox2'];
+	$checkbox3 = $instance['checkbox3'];
+	$checkbox4 = $instance['checkbox4'];
+	$smi_class = $instance['smi_class'];
+   extract( $args );
+   // these are the widget options
+  
+  
+  
+   // Display the widget
+   echo "<div itemscope itemtype='http://schema.org/Organization' itemref='social-links' class='{$smi_class}'><div id='social-links'> ";
+   // Check if title is set
+  
+   // Check if checkbox is checked
+   if( $checkbox AND $checkbox == '1' ) {
+   echo "<a itemprop='sameAs' href='{$facebook_url}' target='_blank' >$facebook</a>";
+   }
+    if( $checkbox2 AND $checkbox2 == '1' ) {
+   echo "<a itemprop='sameAs' href='{$googleplus_url}' target='_blank' >$googleplus</a>";
+   }
+    if( $checkbox3 AND $checkbox3 == '1' ) {
+    echo "<a itemprop='sameAs' href='{$twitter_url}' target='_blank' >$twitter</a>";
+   }
+    if( $checkbox4 AND $checkbox4 == '1' ) {
+    echo "<a itemprop='sameAs' href='{$youtube_url}' target='_blank' >$youtube</a>";
+   }
+   echo '</div></div>';
+  
+}
+public function update($new_instance, $old_instance) {
+      $instance = $old_instance;
+      // Fields
+       $instance['checkbox'] = strip_tags($new_instance['checkbox']);
+	     $instance['checkbox2'] = strip_tags($new_instance['checkbox2']);
+		   $instance['checkbox3'] = strip_tags($new_instance['checkbox3']);
+      $instance['checkbox4'] = strip_tags($new_instance['checkbox4']);
+	  $instance['smi_class'] = strip_tags($new_instance['smi_class']);
+     return $instance;
+}
+public function form( $instance ) { 
+// Check values 
+if( $instance ) { 
+	$checkbox = esc_attr( $instance['checkbox'] ); // Added this
+	$checkbox2 = esc_attr( $instance['checkbox2'] ); // Added this
+	$checkbox3 = esc_attr( $instance['checkbox3'] ); // Added this
+	$checkbox4 = esc_attr( $instance['checkbox4'] ); // Added this
+	$smi_class = esc_attr( $instance['smi_class'] ); // Added this
+} else { 
+	
+	$checkbox = ''; // Added this
+	$checkbox2 = ''; // Added this
+	$checkbox3 = ''; // Added this
+	$checkbox4 = ''; // Added this
+	$smi_class = ''; // Added this
+} ?>
+
+<p><label for="<?php echo $this->get_field_id('smi_class'); ?>"><?php _e('CSS Classes (Insert CSS classes separated by a space):','gff-starter'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('smi_class'); ?>" name="<?php echo $this->get_field_name('smi_class'); ?>" type="text" value="<?php echo esc_attr($smi_class); ?>" /></p>
+
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'checkbox' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'checkbox' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $checkbox ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'checkbox' ) ); ?>"><?php _e( 'Facebook', 'gff-starter' ); ?></label>
+</p>
+
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'checkbox2' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'checkbox2' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $checkbox2 ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'checkbox2' ) ); ?>"><?php _e( 'Google+', 'gff-starter' ); ?></label>
+</p>
+
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'checkbox3' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'checkbox3' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $checkbox3 ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'checkbox3' ) ); ?>"><?php _e( 'Twitter', 'gff-starter' ); ?></label>
+</p>
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'checkbox4' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'checkbox4' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $checkbox4 ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'checkbox4' ) ); ?>"><?php _e( 'Youtube', 'gff-starter' ); ?></label>
+</p>
+		<?php
+	}
+}
+
 
 
 
 function gff_widgets_init() {
+	register_widget('GFF_social_icons');
     register_widget( 'GFF_Custom_Block' );
 	register_widget('WP_Nav_Menu_With_Class');
 	 register_widget( 'GFF_FA_slideout' );

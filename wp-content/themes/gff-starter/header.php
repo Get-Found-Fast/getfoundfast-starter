@@ -17,6 +17,8 @@
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
 <?php wp_head(); ?>
+<?php the_field('facebook_pixel_code', 'option');?>
+<?php the_field('google_webmaster_code', 'option');?>
 </head>
 
 <body <?php body_class(); ?>>
@@ -24,6 +26,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'gff-starter' ); ?></a>
 
 	<header id="masthead" class="site-header " role="banner">
+    
 		<div class="container"><div class="site-branding row">
       <!-- Widget header code containing logos, CTA, etc. --> 
 	  <?php dynamic_sidebar('header-widget-1');?>
