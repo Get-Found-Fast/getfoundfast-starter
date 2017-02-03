@@ -66,6 +66,26 @@ function gff_starter_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
+		'name'          => esc_html__( 'Global Section 4', 'gff-starter' ),
+		'id'            => 'global-widget-4',
+		'class'         => 'global-widget-section4',
+		'description'   => esc_html__( 'Global widget section under main content 4.', 'gff-starter' ),
+		'before_widget' => '<section id="%1$s" class="widget global-section4-widget row %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title global-section4-widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Global Section 5', 'gff-starter' ),
+		'id'            => 'global-widget-5',
+		'class'         => 'global-widget-section5',
+		'description'   => esc_html__( 'Global widget section under main content 5.', 'gff-starter' ),
+		'before_widget' => '<section id="%1$s" class="widget global-section5-widget row %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title global-section5-widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	register_sidebar( array(
 		'name'          => esc_html__( 'Footer', 'gff-starter' ),
 		'id'            => 'footer-widget-1',
 		'class'         => 'footer-widget-section1',

@@ -97,6 +97,8 @@ wp_enqueue_style( 'gff-starter-slider-css', get_stylesheet_directory_uri()  . '/
 wp_enqueue_style( 'gff-starter-font-awesome', get_stylesheet_directory_uri()  . '/css/font-awesome.css', array(), '1.0' );
 wp_enqueue_script( 'gff-starter-slick-slider-init', get_template_directory_uri() . '/js/slick-init.js', array(), '20151215', true );
 wp_enqueue_script( 'gff-starter-slick-slider', get_template_directory_uri() . '/js/slick.js', array(), '20151215', true );
+wp_enqueue_script( 'gff-starter-lazyload', get_template_directory_uri() . '/js/jquery.lazyload.min.js', array(), '20151215', true );
+wp_enqueue_script( 'gff-starter-flowtype', get_template_directory_uri() . '/js/flowtype.js', array(), '20151215', true );
 wp_enqueue_script( 'gff-starter-responsive-menu', get_template_directory_uri() . '/js/jquery.slicknav.js', array(), '20151215', true );
 wp_enqueue_script( 'gff-starter-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 

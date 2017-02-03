@@ -243,5 +243,5 @@ function get_states_array() {
         'WY' => __( 'Wyoming' , 'textdomain' ),
     );
 }
- 
+
 

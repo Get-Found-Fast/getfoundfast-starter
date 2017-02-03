@@ -16,6 +16,8 @@
 <section class="global-widget1 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-1');?></div></div></section>
 <section class="global-widget2 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-2');?></div></div></section>
 <section class="global-widget3 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-3');?></div></div></section>
+<section class="global-widget4 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-4');?></div></div></section>
+<section class="global-widget5 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-5');?></div></div></section>
 	<footer id="colophon" class="site-footer " role="contentinfo">
     <div class="container">
 		<div class="site-info">
@@ -39,6 +41,23 @@
 		$('#menu').slicknav();
 	});
 </script>
+<script>
+$(document).ready(function() {
+ $("img.lazy").lazyload({
+    effect : "fadeIn",
+	effectspeed: 500,
+});
+});
+
+</script>
+<script>
+$(document).ready(function() {$('body').flowtype({
+   minimum   : 500,
+   maximum   : 1200,
+   minFont   : 12,
+   maxFont   : 16,
+   fontRatio : 80
+});});</script>
 <?php wp_footer(); ?>
 <?php the_field('google_code', 'option');?>
 </body>

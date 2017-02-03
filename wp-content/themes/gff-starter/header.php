@@ -19,6 +19,7 @@
 <?php wp_head(); ?>
 <?php the_field('facebook_pixel_code', 'option');?>
 <?php the_field('google_webmaster_code', 'option');?>
+
 </head>
 
 <body <?php body_class(); ?>>
