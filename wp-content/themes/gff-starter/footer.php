@@ -42,22 +42,24 @@
 	});
 </script>
 <script>
-$(document).ready(function() {
+$(function() {
  $("img.lazy").lazyload({
     effect : "fadeIn",
-	effectspeed: 500,
+	effectspeed: 1000,
 });
 });
 
 </script>
 <script>
-$(document).ready(function() {$('body').flowtype({
-   minimum   : 500,
-   maximum   : 1200,
-   minFont   : 12,
-   maxFont   : 16,
-   fontRatio : 80
-});});</script>
+$(function() {$(".global-widgets, .entry-content, .entry-header").flowtype({
+   minimum   : 360,
+   maximum   : 1500,
+   minFont   : 13,
+   maxFont   : 18,
+   fontRatio : 30
+});});
+
+</script>
 <?php wp_footer(); ?>
 <?php the_field('google_code', 'option');?>
 </body>
