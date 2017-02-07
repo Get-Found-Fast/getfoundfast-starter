@@ -38,13 +38,6 @@
 			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'menu', 'container' => 'div', 'container_class' => 'container' ) ); ?><!-- menu_id must = menu for slicknav mobile menu to work -->
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
- <!-- CSS slideout form --> 
-     <?php if (is_active_sidebar('slideout-widget')) {
-     ?>
-     <?php dynamic_sidebar('slideout-widget');?>
-   
- <?php
-     }
- ?>  
+ 
     
 	<div id="content" class="site-content">

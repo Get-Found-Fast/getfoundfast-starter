@@ -111,8 +111,8 @@ function gff_starter_widgets_init() {
 		'id'            => 'slideout-widget',
 		'class'         => 'slideout-widget-section',
 		'description'   => esc_html__( 'Widget for Slide Out Form.', 'gff-starter' ),
-		'before_widget' => '<div id="slideout">',
-		'after_widget'  => '</div>',
+		'before_widget' => '',
+		'after_widget'  => '',
 		'before_title'  => '<h2 class="widget-title slideout-widget-title">',
 		'after_title'   => '</h2>',
 	) );
@@ -405,7 +405,10 @@ public function widget( $args, $instance ) {
 		$text = apply_filters( 'widget_text', $widget_text, $instance, $this );
 
 		?>	<?php echo $args['before_widget'];?>
-			<i class="<?php echo $fa_class; ?>"></i><div id="slideout_inner"><?php echo !empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?></div><?php echo $args['after_widget'];?>
+			<main class="cd-main-content">
+		<a href="#0" class="cd-btn"><i class="<?php echo $fa_class; ?>"></i></a></main><div class="cd-panel from-right">
+		<div class="cd-panel-container">
+			<div class="cd-panel-content"><?php echo !empty( $instance['filter'] ) ? wpautop( $text ) : $text; ?><a href="#0" class="cd-panel-close">Close</a></div></div></div><?php echo $args['after_widget'];?>
 		<?php
 		
 	}
@@ -473,7 +476,7 @@ class GFF_social_icons extends WP_Widget {
 	public function __construct() {
 		$widget_ops = array(
 			'classname' => 'social-icons',
-			'description' => __( 'Add social media icons to the website. Change these under "options".','gff-starter' ),
+			'description' => __( 'Add social media icons to the website. Change these under "theme settings".','gff-starter' ),
 			'customize_selective_refresh' => true,
 		);
 		$control_ops = array( 'width' => 400, 'height' => 350 );
@@ -498,10 +501,9 @@ public function widget($args, $instance) {
    extract( $args );
    // these are the widget options
   
-  
-  
+
    // Display the widget
-   echo "<div itemscope itemtype='http://schema.org/Organization' itemref='social-links' class='{$smi_class}'><div id='social-links'> ";
+   echo "<div itemscope itemtype='http://schema.org/Organization' itemref='social-links' class='social-icons-widget {$smi_class}'><div class='social-links'> ";
    // Check if title is set
   
    // Check if checkbox is checked
@@ -518,6 +520,8 @@ public function widget($args, $instance) {
     echo "<a itemprop='sameAs' href='{$youtube_url}' target='_blank' >$youtube</a>";
    }
    echo '</div></div>';
+   
+  
   
 }
 public function update($new_instance, $old_instance) {
@@ -532,20 +536,14 @@ public function update($new_instance, $old_instance) {
 }
 public function form( $instance ) { 
 // Check values 
-if( $instance ) { 
-	$checkbox = esc_attr( $instance['checkbox'] ); // Added this
-	$checkbox2 = esc_attr( $instance['checkbox2'] ); // Added this
-	$checkbox3 = esc_attr( $instance['checkbox3'] ); // Added this
-	$checkbox4 = esc_attr( $instance['checkbox4'] ); // Added this
-	$smi_class = esc_attr( $instance['smi_class'] ); // Added this
-} else { 
-	
-	$checkbox = ''; // Added this
-	$checkbox2 = ''; // Added this
-	$checkbox3 = ''; // Added this
-	$checkbox4 = ''; // Added this
-	$smi_class = ''; // Added this
-} ?>
+
+$checkbox = isset($instance['checkbox'] ) ?  esc_attr( $instance['checkbox'] ) : ''; 
+$checkbox2 = isset($instance['checkbox2'] ) ?  esc_attr( $instance['checkbox2'] ) : ''; 
+$checkbox3 = isset($instance['checkbox3'] ) ?  esc_attr( $instance['checkbox3'] ) : ''; 
+$checkbox4 = isset($instance['checkbox4'] ) ?  esc_attr( $instance['checkbox4'] ) : ''; 
+$smi_class = isset($instance['smi_class'] ) ?  esc_attr( $instance['smi_class'] ) : ''; 
+
+ ?>
 
 <p><label for="<?php echo $this->get_field_id('smi_class'); ?>"><?php _e('CSS Classes (Insert CSS classes separated by a space):','gff-starter'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('smi_class'); ?>" name="<?php echo $this->get_field_name('smi_class'); ?>" type="text" value="<?php echo esc_attr($smi_class); ?>" /></p>
@@ -574,8 +572,150 @@ if( $instance ) {
 
 
 
+/**
+	 * Adds contact information widget
+	 */
+ 
+class GFF_contact_info extends WP_Widget {
+
+	
+	/**
+	 * Sets up a new Text widget instance.
+	 *
+	 * @since 2.8.0
+	 * @access public
+	 */
+	public function __construct() {
+		$widget_ops = array(
+			'classname' => 'contact-information',
+			'description' => __( 'Adds contact information to the website. Change these under "theme settings".','gff-starter' ),
+			'customize_selective_refresh' => true,
+		);
+		$control_ops = array( 'width' => 400, 'height' => 350 );
+		parent::__construct( 'contact-informations', __( 'Contact Information Block','gff-starter' ), $widget_ops, $control_ops );
+	}
+
+// display widget
+public function widget($args, $instance) {
+	$address1 = get_field('address_street', 'option');
+	$address2 = get_field('address_street_2', 'option');
+	$city = get_field('address_city', 'option');
+	$state = get_field('address_state', 'option');
+	$zip = get_field('address_postcode', 'option');
+	$phone = get_field('phone_number', 'option');
+	$email = get_field('email', 'option');
+	$address1cb = $instance['address1cb'];
+	$address2cb = $instance['address2cb'];
+	$citycb = $instance['citycb'];
+	$statecb = $instance['statecb'];
+	$zipcb = $instance['zipcb'];
+	$phonecb = $instance['phonecb'];
+	$emailcb = $instance['emailcb'];
+	$ci_class = $instance['ci_class'];
+   extract( $args );
+   // these are the widget options
+  
+ 
+  
+   // Display the widget
+   echo "<div class='contact-information-widget {$ci_class}' itemprop='address' itemscope itemtype='http://schema.org/PostalAddress'> ";
+   // Check if title is set
+  
+   // Check if checkbox is checked
+   if( $address1cb AND $address1cb == '1' ) {
+   echo "<span itemprop='streetAddress'>{$address1}</span>";
+   }
+   if( $address2cb AND $address2cb == '1' ) {
+   echo $address2 ;
+   }
+   if( $citycb AND $citycb == '1' ) {
+   echo "<span itemprop='addressLocality'> {$city},</span>";
+   }
+   if( $statecb AND $statecb == '1' ) {
+   echo "<span itemprop='addressRegion'> {$state}</span>";
+   }
+   if( $zipcb AND $zipcb == '1' ) {
+   echo "<span itemprop='postalCode'> {$zip}</span> |";
+   }
+    if( $phonecb AND $phonecb == '1' ) {
+   echo "<span itemprop='telephone'> <a href='tel:{$phone}'>{$phone}</a></span> |";
+   }
+    if( $emailcb AND $emailcb == '1' ) {
+   echo " <a href='mailto:{$email}' itemprop='email'>{$email}</a>";
+   }
+   
+   echo '</div>';
+  
+}
+public function update($new_instance, $old_instance) {
+      $instance = $old_instance;
+      // Fields
+       $instance['address1cb'] = strip_tags($new_instance['address1cb']);
+	   $instance['address2cb'] = strip_tags($new_instance['address2cb']);
+	    $instance['citycb'] = strip_tags($new_instance['citycb']);
+		$instance['statecb'] = strip_tags($new_instance['statecb']);
+		$instance['zipcb'] = strip_tags($new_instance['zipcb']);
+		$instance['phonecb'] = strip_tags($new_instance['phonecb']);
+		$instance['emailcb'] = strip_tags($new_instance['emailcb']);
+	  $instance['ci_class'] = strip_tags($new_instance['ci_class']);
+     return $instance;
+}
+public function form( $instance ) { 
+// Check values 
+$address1cb = isset($instance['address1cb'] ) ?  esc_attr( $instance['address1cb'] ) : ''; 
+$address2cb = isset($instance['address2cb'] ) ?  esc_attr( $instance['address2cb'] ) : ''; 
+$citycb = isset($instance['citycb'] ) ?  esc_attr( $instance['citycb'] ) : ''; 
+$statecb = isset($instance['statecb'] ) ?  esc_attr( $instance['statecb'] ) : ''; 
+$zipcb = isset($instance['zipcb'] ) ?  esc_attr( $instance['zipcb'] ) : ''; 
+$phonecb = isset($instance['phonecb'] ) ?  esc_attr( $instance['phonecb'] ) : ''; 
+$emailcb = isset($instance['emailcb'] ) ?  esc_attr( $instance['emailcb'] ) : ''; 
+$ci_class = isset($instance['ci_class'] ) ?  esc_attr( $instance['ci_class'] ) : ''; 
+ ?>
+
+<p><label for="<?php echo $this->get_field_id('ci_class'); ?>"><?php _e('CSS Classes (Insert CSS classes separated by a space):','gff-starter'); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('ci_class'); ?>" name="<?php echo $this->get_field_name('ci_class'); ?>" type="text" value="<?php echo esc_attr($ci_class); ?>" /></p>
+
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'address1cb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'address1cb' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $address1cb ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'address1cb' ) ); ?>"><?php _e( 'Address 1', 'gff-starter' ); ?></label>
+</p>
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'address2cb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'address2cb' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $address2cb ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'address2cb' ) ); ?>"><?php _e( 'Address 2', 'gff-starter' ); ?></label>
+</p>
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'citycb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'citycb' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $citycb ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'citycb' ) ); ?>"><?php _e( 'City', 'gff-starter' ); ?></label>
+</p>
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'statecb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'statecb' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $statecb ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'statecb' ) ); ?>"><?php _e( 'State', 'gff-starter' ); ?></label>
+</p>
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'zipcb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'zipcb' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $zipcb ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'zipcb' ) ); ?>"><?php _e( 'Zip Code', 'gff-starter' ); ?></label>
+</p>
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'phonecb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'phonecb' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $phonecb ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'phonecb' ) ); ?>"><?php _e( 'Phone Number', 'gff-starter' ); ?></label>
+</p>
+
+<p>
+<input id="<?php echo esc_attr( $this->get_field_id( 'emailcb' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'emailcb' ) ); ?>" type="checkbox" value="1" <?php checked( '1', $emailcb ); ?> />
+<label for="<?php echo esc_attr( $this->get_field_id( 'emailcb' ) ); ?>"><?php _e( 'Email', 'gff-starter' ); ?></label>
+</p>
+
+
+		<?php
+	}
+}
+
+
+
+
 
 function gff_widgets_init() {
+	register_widget('GFF_contact_info');
 	register_widget('GFF_social_icons');
     register_widget( 'GFF_Custom_Block' );
 	register_widget('WP_Nav_Menu_With_Class');
