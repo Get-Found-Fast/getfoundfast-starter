@@ -33,8 +33,11 @@
 			echo $rightRail;
 			?>
 			<div class="<?php echo wfStyle::contentClasses(); ?>">
-			<?php if (!wfConfig::liveTrafficEnabled()): ?>
-				<div id="wordfenceLiveActivityDisabled"><p><strong>Live activity is disabled.</strong> Login and firewall activity will still appear below.</p></div>
+			<?php
+			$overridden = false;
+			if (!wfConfig::liveTrafficEnabled($overridden)):
+			?>
+				<div id="wordfenceLiveActivityDisabled"><p><strong>Live activity is disabled<?php if ($overridden) { echo ' by the host'; } ?>.</strong> Login and firewall activity will still appear below.</p></div>
 			<?php endif ?>
 				<div class="wf-row wf-add-bottom-small">
 					<div class="wf-col-xs-12" id="wf-live-traffic-legend-wrapper">
@@ -115,7 +118,7 @@
 														</td>
 														<td>
 															<button data-bind="click: $root.removeFilter" type="button"
-																	class="button">
+																	class="wf-btn wf-btn-default">
 																Remove
 															</button>
 														</td>
@@ -125,7 +128,7 @@
 													<tr>
 														<td colspan="3">
 															<div class="wf-pad-small">
-																<button type="button" class="button" data-bind="click: addFilter">
+																<button type="button" class="wf-btn wf-btn-default" data-bind="click: addFilter">
 																	Add Filter
 																</button>
 															</div>
@@ -146,7 +149,7 @@
 																   data-bind="value: startDate, datetimepicker: null, datepickerOptions: { timeFormat: 'hh:mm tt z' }">
 														</td>
 														<td>
-															<button data-bind="click: startDate('')" class="button small"
+															<button data-bind="click: startDate('')" class="wf-btn wf-btn-default wf-btn-sm"
 																	type="button">
 																Clear
 															</button>
@@ -161,7 +164,7 @@
 																   data-bind="value: endDate, datetimepicker: null, datepickerOptions: { timeFormat: 'hh:mm tt z' }">
 														</td>
 														<td>
-															<button data-bind="click: endDate('')" class="button small"
+															<button data-bind="click: endDate('')" class="wf-btn wf-btn-default wf-btn-sm"
 																	type="button">
 																Clear
 															</button>
@@ -346,41 +349,41 @@
 											<tr>
 												<td>
 													<span data-bind="if: blocked()">
-														<a href="#" class="button button-small"
+														<a href="#" class="wf-btn wf-btn-default wf-btn-sm"
 																data-bind="click: $root.unblockIP">
 															Unblock this IP
 														</a>
 													</span>
 													<span data-bind="if: rangeBlocked()">
-														<a href="#" class="button button-small"
+														<a href="#" class="wf-btn wf-btn-default wf-btn-sm"
 																data-bind="click: $root.unblockNetwork">Unblock this range
 														</a>
 													</span>
 													<span data-bind="if: !blocked() && !rangeBlocked()">
-														<a href="#" class="button button-small"
+														<a href="#" class="wf-btn wf-btn-default wf-btn-sm"
 																data-bind="click: $root.blockIP">
 															Block this IP
 														</a>
 													</span>
-													<a class="button button-small"
+													<a class="wf-btn wf-btn-default wf-btn-sm"
 															data-bind="attr: { href: 'admin.php?page=WordfenceTools&whoisval=' + IP() + '&wfnetworkblock=1#top#whois'}">
 														Block this network
 													</a>
-													<a class="button button-small" data-bind="text: 'Run WHOIS on ' + IP(),
+													<a class="wf-btn wf-btn-default wf-btn-sm" data-bind="text: 'Run WHOIS on ' + IP(),
 														attr: { href: 'admin.php?page=WordfenceTools&whoisval=' + IP() + '#top#whois' }"
 															target="_blank"></a>
-													<a class="button button-small"
+													<a class="wf-btn wf-btn-default wf-btn-sm"
 															data-bind="attr: { href: WFAD.makeIPTrafLink(IP()) }" target="_blank">
 														See recent traffic
 													</a>
 													<span data-bind="if: action() == 'blocked:waf'">
-														<a href="#" class="button button-small"
+														<a href="#" class="wf-btn wf-btn-default wf-btn-sm"
 																data-bind="click: function () { $root.whitelistWAFParamKey(actionData().path, actionData().paramKey, actionData().failedRules) }"
 																title="If this is a false positive, you can exclude this parameter from being filtered by the firewall">
 															Whitelist param from Firewall
 														</a>
 														<?php if (WFWAF_DEBUG): ?>
-															<a href="#" class="button button-small"
+															<a href="#" class="wf-btn wf-btn-default wf-btn-sm"
 																	data-bind="attr: { href: '<?php echo esc_js(home_url()) ?>?_wfsf=debugWAF&nonce=' + WFAD.nonce + '&hitid=' + id() }" target="_blank">
 																Debug this Request
 															</a>

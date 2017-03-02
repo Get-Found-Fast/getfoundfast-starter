@@ -10,3 +10,8 @@ RewriteRule . /getfoundfast-starter/index.php [L]
 </IfModule>
 
 # END WordPress
+
+<Files wp-config.php>
+	Order Allow,Deny
+	Deny from all
+</Files>

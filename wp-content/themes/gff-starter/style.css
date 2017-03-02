@@ -1,6 +1,6 @@
 /*
 Theme Name: GFF Starter
-Theme URI: http://underscores.me/
+Theme URI: http://getfoundfast.com/
 Author: Get Found Fast
 Author URI: http://getfoundfast.com/
 Description: Starter theme for Get Found Fast websites
@@ -504,9 +504,20 @@ textarea {
 	padding-top: 20px;
 }
 
-/*--------------------------------------------------------------
-# Navigation
---------------------------------------------------------------*/
+.vertical-header .vertical-container {
+   
+    background: #fff;
+}
+
+.vertical-header {
+	 
+    background: #fff;
+    height: 100%;
+    width: 25%;
+	float: left;
+}
+
+
 /*--------------------------------------------------------------
 ## Links
 --------------------------------------------------------------*/
@@ -550,6 +561,8 @@ a:active {
 	display: inline-block;
 
 }
+
+
 
 
 .main-navigation {
@@ -819,6 +832,12 @@ display: flex;
 .entry-header h1 {
     font-size: 2em;
     margin: 0 0 0.67em 0;
+}
+
+.vertical-content {
+width: 75%;
+    float: left;
+	
 }
 
 /*--------------------------------------------------------------

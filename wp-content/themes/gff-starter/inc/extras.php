@@ -243,5 +243,9 @@ function get_states_array() {
         'WY' => __( 'Wyoming' , 'textdomain' ),
     );
 }
+function wpbeginner_remove_version() {
+return '';
+}
+add_filter('the_generator', 'wpbeginner_remove_version');
 
-
+add_filter('login_errors',create_function('$a', "return null;"));

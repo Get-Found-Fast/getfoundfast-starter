@@ -12,33 +12,74 @@
 ?>
 
 	</div><!-- #content -->
-<section class="global-widget1 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-1');?></div></div></section>
-<section class="global-widget2 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-2');?></div></div></section>
-<section class="global-widget3 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-3');?></div></div></section>
-<section class="global-widget4 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-4');?></div></div></section>
-<section class="global-widget5 global-widgets"><div class="container"><div class="row"><?php dynamic_sidebar('global-widget-5');?></div></div></section>
-	<footer id="colophon" class="site-footer container-fluid" role="contentinfo">
+    <!-- Global widget sections -->
+<section class="global-widget1 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-1');?></div></div></section>
+<section class="global-widget2 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-2');?></div></div></section>
+<section class="global-widget3 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-3');?></div></div></section>
+<section class="global-widget4 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-4');?></div></div></section>
+<section class="global-widget5 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-5');?></div></div></section>
+	<footer id="colophon" class="site-footer " role="contentinfo">
+    <div class="container-fluid">
 		<div class="site-info">
 			<div class="row"><?php dynamic_sidebar('footer-widget-1');?></div>
             <div class="row"><?php dynamic_sidebar('copyright-widget');?></div>
-             <!-- Contact information section w/ schema -->
-             <div class="row"><div class="contact-information col-lg-12 col-md-12 col-sm-12 col-xs-12" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-			<span itemprop="streetAddress"><?php the_field('address_street','option');?></span>
-			<?php the_field('address_street_2','option');?>
-			<span itemprop="addressLocality"><?php the_field('address_city','option');?></span>
-			 <span itemprop="addressRegion"><?php the_field('address_state','option');?></span>
-			 <span itemprop="postalCode"><?php the_field('address_postcode','option');?></span>
-			<span itemprop="telephone"><a href="tel:<?php the_field('phone_number','option');?>"><?php the_field('phone_number','option');?></a></span>
-			<a href="mailto:<?php the_field('email','option');?>" itemprop="email"><?php the_field('email','option');?></a> </div></div>
+        
 		</div><!-- .site-info -->
+        </div><!-- .container -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
+
+
+<!-- CSS slideout form --> 
+     <?php if (is_active_sidebar('slideout-widget')) {
+     ?>
+     <?php dynamic_sidebar('slideout-widget');?>
+   
+ <?php
+     }
+ ?>  
+
+<script type="text/javascript">jQuery(document).ready(function($){
+	//open the lateral panel
+	$('.cd-btn').on('click', function(event){
+		event.preventDefault();
+		$('.cd-panel').addClass('is-visible');
+	});
+	//clode the lateral panel
+	$('.cd-panel').on('click', function(event){
+		if( $(event.target).is('.cd-panel') || $(event.target).is('.cd-panel-close') ) { 
+			$('.cd-panel').removeClass('is-visible');
+			event.preventDefault();
+		}
+	});
+});</script>
+
+
 <script>
 	$(function(){
 		$('#menu').slicknav();
 	});
 </script>
-<?php wp_footer(); ?>
+<script>
+$(function() {
+ $("img.lazy").lazyload({
+    effect : "fadeIn",
+	effectspeed: 1000,
+});
+});
 
+</script>
+<script>
+$(function() {$(".global-widgets, .entry-content, .entry-header").flowtype({
+   minimum   : 360,
+   maximum   : 1500,
+   minFont   : 13,
+   maxFont   : 18,
+   fontRatio : 30
+});});
+
+</script>
+<?php wp_footer(); ?>
+<?php the_field('google_code', 'option');?>
 </body>
 </html>
