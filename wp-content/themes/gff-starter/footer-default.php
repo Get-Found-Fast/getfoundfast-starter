@@ -12,14 +12,9 @@
 ?>
 
 	</div><!-- #content -->
-    <!-- Global widget sections -->
-<section class="global-widget1 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-1');?></div></div></section>
-<section class="global-widget2 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-2');?></div></div></section>
-<section class="global-widget3 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-3');?></div></div></section>
-<section class="global-widget4 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-4');?></div></div></section>
-<section class="global-widget5 global-widgets"><div class="container-fluid"><div class="row"><?php dynamic_sidebar('global-widget-5');?></div></div></section>
+    
 	<footer id="colophon" class="site-footer " role="contentinfo">
-    <div class="container-fluid">
+    <div class="container container-default">
 		<div class="site-info">
 			<div class="row"><?php dynamic_sidebar('footer-widget-1');?></div>
             <div class="row"><?php dynamic_sidebar('copyright-widget');?></div>

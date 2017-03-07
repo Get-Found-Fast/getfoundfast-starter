@@ -12,3 +12,16 @@ jQuery(document).ready(function($){
 });
 });
 
+
+jQuery(document).ready(function($){
+     $('.slideshow').slick({
+dots: true,
+  infinite: true,
+  speed: 300,
+  slidesToShow: 1,
+  centerMode: true,
+  arrows: true,
+  adaptiveHeight: true,
+});
+});
+

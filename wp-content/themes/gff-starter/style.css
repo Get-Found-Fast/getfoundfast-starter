@@ -851,7 +851,17 @@ width: 75%;
 	background-position: center;
 	background-size: cover;
 	height: 500px;}
-	
+
+/*--------------------------------------------------------------
+# Slideshow
+--------------------------------------------------------------*/
+
+
+.slick-slide img {
+	width: auto;
+	height: 300px;
+	object-fit: contain;
+}
 	
 /*--------------------------------------------------------------
 # Contact Form 7 Styling

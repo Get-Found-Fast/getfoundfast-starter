@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full Width
+ * Template Name: Default
  *
  * This is the template that displays all pages by default.
  * Please note that this is the WordPress construct of pages
@@ -12,15 +12,15 @@
  * @package GFF_Starter
  */
 
-get_header('full'); ?>
+get_header(); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main container-fluid" role="main">
+		<main id="main" class="site-main" role="main">
 
 			<?php
 			while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'page' );
+				get_template_part( 'template-parts/content', 'default' );
 
 				
 			endwhile; // End of the loop.
@@ -31,4 +31,4 @@ get_header('full'); ?>
 
 <?php
 
-get_footer('full');
+get_footer('default');

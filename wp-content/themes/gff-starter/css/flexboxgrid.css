@@ -144,7 +144,11 @@ hr {
   margin-left: auto;
 }
 
-
+.container-default {
+padding-left: 15px;
+padding-right: 15px;	
+	
+}
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
@@ -175,7 +179,7 @@ hr {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1000px;
+    width: 1200px;
   }
 }
 
